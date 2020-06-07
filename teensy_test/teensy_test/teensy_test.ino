@@ -18,9 +18,9 @@ void printBuffer(byte *bytes, int length) {
 }
 
 void transferBuffer(byte *source, int length) {
-  Serial.print("Transmitting ");
-  Serial.print(length, DEC);
-  Serial.println(" bytes");
+//  Serial.print("Transmitting ");
+//  Serial.print(length, DEC);
+//  Serial.println(" bytes");
 
   memcpy(buffer, source, length);
 
@@ -28,9 +28,9 @@ void transferBuffer(byte *source, int length) {
 }
 
 void validateResponse(byte *expected, int length) {
-  printBuffer(expected, length);
-  
-  printBuffer(buffer, length);
+//  printBuffer(expected, length);
+//  
+//  printBuffer(buffer, length);
   
 	for(int i = 0; i < length; i++) {
 		if(expected[i] != 0xFF
@@ -69,7 +69,7 @@ void setup() {
 
   digitalWrite(ssPin, 1);
 
-  SPI.beginTransaction(spiSettings);
+  delay(5);
 
   digitalWrite(ssPin, 0);
 
@@ -84,7 +84,7 @@ void setup() {
 
 void loop() {
 
-  delay(1000);
+  delay(200);
 
   SPI.beginTransaction(spiSettings);
 
